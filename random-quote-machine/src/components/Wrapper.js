@@ -3,7 +3,7 @@ import "./../css/wrapper.css";
 import { FaTwitter, FaLinkedin } from "react-icons/fa";
 
 function Wrapper() {
-  const [quotes, setQuotes] = useState([
+  const quotes =[
     {
       id: 1,
       quote: "My name is Hellen and I am a software engineer.",
@@ -19,7 +19,7 @@ function Wrapper() {
       quote: "I am me.",
       author: "Wairimu",
     },
-  ]);
+  ];
 
   const [randomQuote, setRandomQuote] = useState(
     quotes[Math.floor(Math.random() * quotes.length)]
