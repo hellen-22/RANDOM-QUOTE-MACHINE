@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./../css/wrapper.css";
-import { FaTwitter, FaLinkedin } from "react-icons/fa";
+import { FaTwitter, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import axios from "axios";
 
 function Wrapper() {
@@ -78,7 +78,7 @@ function Wrapper() {
 
   return (
     <div className="wrapper" id="quote-box">
-      <q id="text" className="quote-text" style={{ color: color }} onChange={changeColor}>
+      <q id="text" className="quote-text" style={{ color: color }}>
         {quotes.text}
       </q>
       <p id="author" className="quote-author">
@@ -99,23 +99,19 @@ function Wrapper() {
         <div id="share-quote">
           <a
             className="btn "
-            href="twitter.com/intent/tweet"
+            href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fparse.com"
             style={{ backgroundColor: color, color: "white" }}
-            onClick={() => {
-              changeColor();
-            }}
+            target="_blank"
           >
             <FaTwitter />
           </a>
           <a
             className="btn "
-            href="twitter.com/intent/tweet"
+            href={`https://web.whatsapp.com/send?text= ${quotes.text} + ${quotes.author}`}
             style={{ backgroundColor: color, color: "white" }}
-            onClick={() => {
-              changeColor();
-            }}
+            target="_blank"
           >
-            <FaLinkedin />
+            <FaWhatsapp />
           </a>
         </div>
       </div>
