@@ -29,7 +29,7 @@ function Wrapper() {
       .get("https://goquotes-api.herokuapp.com/api/v1/random?count=150")
       .then((response) => {
         console.log(response);
-        
+
         setQuotes(
           response.data.quotes[
             Math.floor(Math.random() * response.data.quotes.length)
@@ -40,10 +40,45 @@ function Wrapper() {
         console.log(error);
       });
   };
+  //change button color when clicked
+  const colors = [
+    "#00bcd4",
+    "#ff9800",
+    "#9c27b0",
+    "#2196f3",
+    "#009688",
+    "#ffeb3b",
+    "#ff5722",
+    "#673ab7",
+    "#e91e63",
+    "#3f51b5",
+    "#795548",
+    "#607d8b",
+    "#9e9e9e",
+    "#212121",
+    "#f44336",
+    "#3f51b5",
+    "#795548",
+    "#607d8b",
+    "#9e9e9e",
+    "#232323",
+    "#f66d9b",
+    "#673ab7",
+    "#e91e63",
+    "#2f3f4d",
+    "#e65100",
+    "#23fea9",
+  ];
+  const [color, setColor] = useState("#00bcd4");
+
+  const changeColor = () => {
+    const random = Math.floor(Math.random() * colors.length);
+    setColor(colors[random]);
+  };
 
   return (
     <div className="wrapper" id="quote-box">
-      <q id="text" className="quote-text">
+      <q id="text" className="quote-text" style={{ color: color }} onChange={changeColor}>
         {quotes.text}
       </q>
       <p id="author" className="quote-author">
@@ -52,16 +87,34 @@ function Wrapper() {
       <div className="buttons">
         <button
           className="btn "
-          onClick={randomQuote}
+          onClick={() => {
+            randomQuote();
+            changeColor();
+          }}
+          style={{ backgroundColor: color, color: "white" }}
         >
           New Quote
         </button>
 
         <div id="share-quote">
-          <a className="sharebutton btn " href="twitter.com/intent/tweet">
+          <a
+            className="btn "
+            href="twitter.com/intent/tweet"
+            style={{ backgroundColor: color, color: "white" }}
+            onClick={() => {
+              changeColor();
+            }}
+          >
             <FaTwitter />
           </a>
-          <a className="sharebutton btn " href="twitter.com/intent/tweet">
+          <a
+            className="btn "
+            href="twitter.com/intent/tweet"
+            style={{ backgroundColor: color, color: "white" }}
+            onClick={() => {
+              changeColor();
+            }}
+          >
             <FaLinkedin />
           </a>
         </div>
